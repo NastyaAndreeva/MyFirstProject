@@ -310,9 +310,9 @@ html {
 }
 
 /* ------------------------------End footer----------------------------------------- */
-@media (max-width: 700px) {
+@media screen and (max-device-width: 640px) {
   .profile {
-    width: 100%;
+    width: 50%;
   }
 
   .section {
@@ -325,7 +325,7 @@ html {
   }
 
   .main-article__title {
-    font-size: 15px;
+    font-size: 30px;
   }
   .main-article__list {
     font-size: 10px;
@@ -333,6 +333,11 @@ html {
 
   .about-section {
     flex-flow: column;
+  }
+
+  .article-about {
+    width: 100%;
+    font-size: 12px;
   }
 
   .advantages__list {
@@ -347,11 +352,25 @@ html {
   }
 
   .purchase-offers {
+    margin-left: 90px;
     flex-flow: column;
+  }
+  .purchase-offers__standart {
+    margin-top: 100px;
+  }
+  .purchase-offers__premium {
+    margin-top: 100px;
+  }
+  .purchase-offers__lux {
+    margin-bottom: 100px;
   }
 
   .contacts__place {
     flex-flow: column;
+  }
+
+  .contact-form {
+    margin-left: 0px;
   }
 }
 
