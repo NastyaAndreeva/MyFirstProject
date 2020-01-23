@@ -363,6 +363,16 @@ html {
   .main-article__title {
     font-size: 10px;
   }
+
+  .section-photos__list {
+    flex-flow: column;
+}
+.purchase-offers {
+    flex-flow: column;
+}
+.contacts__place {
+    flex-flow: column;
+}
 }
 
 /*# sourceMappingURL=app.css.map */

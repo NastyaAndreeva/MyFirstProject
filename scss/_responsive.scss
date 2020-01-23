@@ -2,17 +2,40 @@
     .profile {
         width: 100%;
     }
-    .main-section {
-        flex-flow: column;
-        // align-items: center;
-    }
     .section {
         padding: 5px 10px;
     }
-
+    .main-section {
+        width: 100%;
+        flex-flow: column;
+    }
     .main-article {
         &__title {
-            font-size: 10px;
+            font-size: 15px;
+        }
+        &__list {
+            font-size: 5px * 2;
         }
     }
+    .about-section {
+        flex-flow: column;
+    }
+    .advantages{
+        &__list {
+            flex-flow: column;
+        }
+        &__item {
+            flex-flow: column;
+        }
+    } 
+    .section-photos__list {
+        flex-flow: column;
+    }
+    .purchase-offers {
+        flex-flow: column;
+    }
+    .contacts__place {
+        flex-flow: column;
+    }
+
 }
