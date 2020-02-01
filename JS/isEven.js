@@ -1,4 +1,5 @@
 function isEven(N) {
+    if (N < 0) return isEven(-N);
     switch(N) {
         case 0:
             return 'true';
