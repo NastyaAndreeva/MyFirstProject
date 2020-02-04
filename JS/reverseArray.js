@@ -23,11 +23,6 @@ let reverseArrayInPlace = (array) => {
     return array;
 }
 
-let newStrResult = reverseArrayInPlace(strArray);
-let newIntResult = reverseArrayInPlace(intArray);
-console.log(newIntResult);
-console.log(newStrResult);
-
 let myArray = ['Hello, ', 'my ', 'darlings!'];
 reverseArrayInPlace(myArray);
 console.log(myArray);

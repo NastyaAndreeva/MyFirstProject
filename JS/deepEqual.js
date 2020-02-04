@@ -1,29 +1,41 @@
-let deepEqual = function(obj1, obj2) {
-    if (obj1 === obj2){
+function deepEqual(obj1, obj2) {
+    if (obj1 === obj2) {
         return true;
     }
-    if (typeof(obj1) == typeof(obj2) && typeof(obj1) == 'object') {
-        if (typeof(obj1) == 'null' || typeof(obj2) == 'null'){
+    if (typeof (obj1) == typeof (obj2) && typeof (obj1) == 'object') {
+        if (obj1 == null || obj2 == null) {
             return false;
         }
-        obj1.map((element) => {
-            for (let key in obj2) {
-                if (key == element) {
-                    return true;
+        let equals = true;
+        for (let property in obj1) {
+            if (obj1.hasOwnProperty(property) && obj2.hasOwnProperty(property)) {
+                if (!deepEqual(obj1[property], obj2[property])) {
+                    equals = false;
                 }
-                else
-                    return false;
             }
-        })
-        // for (let key in obj2) {
-        //     if (!(key in obj1) || !deepEqualPerfect(obj1[key], obj2[key])) {
-        //         return false;
-        //     }
-        // }
+            else {
+                equals = false;
+            }
+        }
+        return equals;
     }
-    return 'blabla';
+    return obj1 === obj2;
 }
-let a = {prop1: null};
-let b = {prop1: false};
-console.log(deepEqual(a,b));
-// console.log(typeof a, typeof b);
+
+let obj = {
+    here: 'is',
+    object: 2
+};
+let obj2 = {
+    here: 'ola',
+    object: 2
+}
+let obj3 = null;
+let obj4 = 'str';
+let obj5 = 4;
+let obj6 = undefined;
+console.log(deepEqual(obj2, obj));
+console.log(deepEqual(obj, obj));
+console.log(deepEqual({ here: 'is', object: 2 }, obj));
+console.log(deepEqual(obj3, obj5));
+console.log(deepEqual(obj4, obj6));
