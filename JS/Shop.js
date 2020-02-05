@@ -2,17 +2,16 @@ const Shop = function(id) {
     this.id = id;
     this.goods = [];
     this.clients = [];
-    this.historyPurchase = [];
+    this.History = [];
 
     this.addGoods = (item, count = 1) => {
         for (let i = 1; i<= count; i++){
             this.goods.push(item);
-            console.log(this.goods);
         }
     }
 
-    this.deleteGoods = (index, count) => {
-        this.goods.splice(index, count);
+    this.deleteGoods = (item, count = 1) => {
+        this.goods.splice(this.goods.indexOf(item), count);
     }
 
     this.addClients = (item) => {
@@ -23,37 +22,61 @@ const Shop = function(id) {
         this.clients.splice(index, count);
     }
 
-    this.sell = (item) => {
-        this.historyPurchase.push(item);
+    this.sell = (client, type, count, item) => {
+        historyPurchase = {};
+        historyPurchase.date = new Date();
+        historyPurchase.name = client.name;
+        historyPurchase.type = type;
+        historyPurchase.count = count;
+        historyPurchase.sum = count * item.value;
+        this.goods.splice(this.goods.indexOf(item), count);
+        this.clients[this.clients.indexOf(name)].purchase += count*item.value;
+        this.History.push(historyPurchase);
     }
 
-    this.countSell = (item) => {
+    this.countSell = () => {
+        let count = 0;
+        
+        this.History.map((element) => {
+            count += element.count;
+        })
 
+        return `Количество проданного товара: ${count}`;
     }
 
-    this.sumSell = (item) => {
+    this.sumSell = () => {
+        let sum = 0;
+        
+        this.History.map((element) => {
+            sum += element.sum;
+        })
 
+        return `Сумма заработанных денег: ${sum}`;
     }
 
-    this.countGoods = (item) => {
-
+    this.countGoods = () => {
+        return `Количество товара на складе: ${this.goods.length}`;
     }
 
-    this.sumTypeGoogs = (item) => {
-
+    this.countSellTypeGoods = (type) => {
+        let count = 0;
+        for (let key in this.History) {
+            if (this.History[key].type == type) {
+                count += this.History[key].count;
+            }
+        }
+        return `Количество проданного товара типа ${type}: ${count}`;
     }
 
-    this.countTypeGoods = (item) => {
-        // ассоциативный массив
-    }
-     // this.checkout = () => {
-    //     let sum = 0;
-    //     this.items.map((element) => {
-    //         sum += element.value;
-    //     })
-    //     return sum;
-    // }
-    
+    this.countTypeGoods = (type) => {
+        let count = 0;
+        for (let key in this.goods) {
+            if (this.goods[key].type == type) {
+                count++;
+            }
+        }
+        return `Количество товара на складе типа ${type}: ${count}`;
+    }  
 }
 
 const Goods = function(title, type, value) {
@@ -68,36 +91,43 @@ const Client = function(name, surName, purchase) {
     this.purchase = purchase;
 }
 
-const History = function(date, name, type, count, sum) {
-    this.date = date;
-    this.name = name;
-    this.type = type;
-    this.count = count;
-    this.sum = sum;
-}
-
 let myFirstShop = new Shop(1);
 
 let dress = new Goods('Dress', 'clothes', 100);
 let coat = new Goods('Coat', 'clothes', 200);
-let car = new Goods('Car', 'vehicle transport', 2000);
+let car = new Goods('Car', 'vehicle transport', 3100);
 
 let ekonomik = new Client('Anastasiia', 'Andreeva', 3000);
-let eleks = new Client('Irina0', 'Popovich', 2000);
-let eleks1 = new Client('Irina1', 'Popovich', 2000);
-let eleks2 = new Client('Irina2', 'Popovich', 2000);
-let eleks3 = new Client('Irina3', 'Popovich', 2000);
+let eleks = new Client('Irina', 'Popovich', 2000);
+let employment = new Client('Victoriia', 'Kshenina', 1000);
 
-myFirstShop.addGoods(dress, 3);
-myFirstShop.addGoods(coat);
-myFirstShop.addGoods(car);
+myFirstShop.addGoods(dress, 20);
+myFirstShop.addGoods(coat, 10);
+myFirstShop.addGoods(car, 5);
 
 myFirstShop.addClients(ekonomik);
 myFirstShop.addClients(eleks);
-myFirstShop.addClients(eleks1);
-myFirstShop.addClients(eleks2);
-myFirstShop.addClients(eleks3);
+myFirstShop.addClients(employment);
+
 myFirstShop.deleteGoods(1,1);
-myFirstShop.deleteClient(1);
+
+myFirstShop.sell(eleks, 'clothes', 2, dress);
+myFirstShop.sell(ekonomik, 'vehicle transport', 1, car);
+myFirstShop.sell(employment, 'vehicle transport', 1, car);
+myFirstShop.sell(employment, 'clothes', 2, coat);
 
 console.log(myFirstShop);
+
+console.log(myFirstShop.sumSell());
+
+console.log(myFirstShop.countSell());
+
+console.log(myFirstShop.countGoods());// Всего было 35, минус 1 удалили, минус 6 продали, итого 28
+
+console.log(myFirstShop.countTypeGoods('clothes'));
+
+console.log(myFirstShop.countTypeGoods('vehicle transport'));
+
+console.log(myFirstShop.countSellTypeGoods('vehicle transport'));
+
+console.log(myFirstShop.countSellTypeGoods('clothes'));
