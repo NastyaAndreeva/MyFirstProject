@@ -1,0 +1,58 @@
+@media screen and (max-device-width: 640px){
+    .profile {
+        width: 50%;
+    }
+    .section {
+        padding: 5px 10px;
+    }
+    .main-section {
+        width: 100%;
+        flex-flow: column;
+    }
+    .main-article {
+        &__title {
+            font-size: 30px;
+        }
+        &__list {
+            font-size: 5px * 2;
+        }
+    }
+    .about-section {
+        flex-flow: column;
+    }
+    .article-about {
+        width: 100%;
+        font-size: 12px;
+    }
+    .advantages{
+        &__list {
+            flex-flow: column;
+        }
+        &__item {
+            flex-flow: column;
+        }
+    } 
+    .section-photos__list {
+        flex-flow: column;
+    }
+    .purchase-offers {
+        margin-left: 90px;
+        flex-flow: column;
+        &__standart {
+            margin-top: 100px;
+        }
+        &__premium {
+            margin-top: 100px;
+        }
+        &__lux {
+            margin-bottom: 100px;
+        }
+    }
+    .contacts__place {
+        flex-flow: column;
+    }
+    .contact-form {
+        margin-left: 0px;
+    }
+
+}
