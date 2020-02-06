@@ -1,11 +1,11 @@
-const Shop = function(id) {
+const Shop = function (id) {
     this.id = id;
     this.goods = [];
     this.clients = [];
     this.History = [];
 
     this.addGoods = (item, count = 1) => {
-        for (let i = 1; i<= count; i++){
+        for (let i = 1; i <= count; i++) {
             this.goods.push(item);
         }
     }
@@ -30,13 +30,13 @@ const Shop = function(id) {
         historyPurchase.count = count;
         historyPurchase.sum = count * item.value;
         this.goods.splice(this.goods.indexOf(item), count);
-        this.clients[this.clients.indexOf(name)].purchase += count*item.value;
+        this.clients[this.clients.indexOf(client)].purchase += count * item.value;
         this.History.push(historyPurchase);
     }
 
     this.countSell = () => {
         let count = 0;
-        
+
         this.History.map((element) => {
             count += element.count;
         })
@@ -46,7 +46,7 @@ const Shop = function(id) {
 
     this.sumSell = () => {
         let sum = 0;
-        
+
         this.History.map((element) => {
             sum += element.sum;
         })
@@ -76,16 +76,16 @@ const Shop = function(id) {
             }
         }
         return `Количество товара на складе типа ${type}: ${count}`;
-    }  
+    }
 }
 
-const Goods = function(title, type, value) {
+const Goods = function (title, type, value) {
     this.title = title;
     this.type = type;
     this.value = value;
 }
 
-const Client = function(name, surName, purchase) {
+const Client = function (name, surName, purchase) {
     this.name = name;
     this.surName = surName;
     this.purchase = purchase;
@@ -109,11 +109,10 @@ myFirstShop.addClients(ekonomik);
 myFirstShop.addClients(eleks);
 myFirstShop.addClients(employment);
 
-myFirstShop.deleteGoods(1,1);
+myFirstShop.deleteGoods(1, 1);
 
 myFirstShop.sell(eleks, 'clothes', 2, dress);
 myFirstShop.sell(ekonomik, 'vehicle transport', 1, car);
-myFirstShop.sell(employment, 'vehicle transport', 1, car);
 myFirstShop.sell(employment, 'clothes', 2, coat);
 
 console.log(myFirstShop);
@@ -122,7 +121,7 @@ console.log(myFirstShop.sumSell());
 
 console.log(myFirstShop.countSell());
 
-console.log(myFirstShop.countGoods());// Всего было 35, минус 1 удалили, минус 6 продали, итого 28
+console.log(myFirstShop.countGoods());
 
 console.log(myFirstShop.countTypeGoods('clothes'));
 
@@ -131,3 +130,4 @@ console.log(myFirstShop.countTypeGoods('vehicle transport'));
 console.log(myFirstShop.countSellTypeGoods('vehicle transport'));
 
 console.log(myFirstShop.countSellTypeGoods('clothes'));
+
