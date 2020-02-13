@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development ./lesson5/index.js --output ./lesson5/main.js",
-    "build": "webpack --mode production ./src/index.js --output ./dist/main.js"
+    "prod": "webpack --mode production ./lesson5/index.js --output ./lesson5/main.js"
   },
   "keywords": [],
   "author": "",

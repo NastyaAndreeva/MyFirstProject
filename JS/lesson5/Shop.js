@@ -1,3 +1,5 @@
+import {Purchase} from './Purchase'
+
 export class Shop {
     constructor(id) {
         this.id = id;
@@ -28,44 +30,60 @@ export class Shop {
     }
 
     sell(client, type, count, item){     
-        this.goods.splice(this.goods.indexOf(item), count);
+        
+        let productToSell = this.goods.filter(goods => goods.name == item);
+        // if (!productToSell){
+        //     return 'Товара ${item} нет на складе!';
+        // }
+            
+        // if (productToSell.length < count){
+        //     return 'Товара ${item} не хватает на складе!';
+        // }
+            
+        this.goods.splice(0, productToSell.length - count);
+        productToSell.forEach(p => {
+            this.deleteGoods(p);
+        })
         this.clients[this.clients.indexOf(client)].purchase += count * item.value;
-        // this.addPurchases(new Purchase(client, type, count, item));
+        this.clients[this.clients.indexOf(client)].amount += count;
+        this.clients[this.clients.indexOf(client)].goods.push(item.name);
+
+        let sum = count * item.value;
+        this.addPurchases(new Purchase(client.name, type, count, sum));
     }
 
-    // countSell(){
-    //     let count = 0;
+    countSell(){
+        let count = 0;
+        this.purchases.map((element) => {
+            count += element.count;
+        })
     
-    //     this.History.map((element) => {
-    //         count += element.count;
-    //     })
-    
-    //     return `Количество проданного товара: ${count}`;
-    // }
+        return `Количество проданного товара: ${count}`;
+    }
 
-    // sumSell(){
-    //     let sum = 0;
+    sumSell(){
+        let sum = 0;
     
-    //     this.History.map((element) => {
-    //         sum += element.sum;
-    //     })
+        this.purchases.map((element) => {
+            sum += element.sum;
+        })
     
-    //     return `Сумма заработанных денег: ${sum}`;
-    // }
+        return `Сумма заработанных денег: ${sum}`;
+    }
 
-    // countGoods(){
-    //     return `Количество товара на складе: ${this.goods.length}`;
-    // }
+    countGoods(){
+        return `Количество товара на складе: ${this.goods.length}`;
+    }
     
-    // countSellTypeGoods(type){
-    //     let count = 0;
-    //     for (let key in this.History) {
-    //         if (this.History[key].type == type) {
-    //             count += this.History[key].count;
-    //         }
-    //     }
-    //     return `Количество проданного товара типа ${type}: ${count}`;
-    // }
+    countSellTypeGoods(type){
+        let count = 0;
+        for (let key in this.purchases) {
+            if (this.purchases[key].type == type) {
+                count += this.purchases[key].count;
+            }
+        }
+        return `Количество проданного товара типа ${type}: ${count}`;
+    }
     
     countTypeGoods(type){
         let count = 0;

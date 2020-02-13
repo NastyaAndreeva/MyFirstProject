@@ -1,7 +1,7 @@
 import {Goods} from './Goods.js'
 import {Client} from './Client.js'
 import {Shop} from './Shop.js'
-import {Purchase} from './Purchase.js'
+
 
 
 let myFirstShop = new Shop(1);
@@ -25,22 +25,23 @@ myFirstShop.addClients(employment);
 myFirstShop.deleteGoods(1, 1);
 
 myFirstShop.sell(eleks, 'clothes', 2, dress);
-// myFirstShop.sell(ekonomik, 'vehicle transport', 1, car);
-// myFirstShop.sell(employment, 'clothes', 2, coat);
+
+myFirstShop.sell(ekonomik, 'vehicle transport', 1, car);
+myFirstShop.sell(employment, 'clothes', 2, coat);
 
 console.log(myFirstShop);
 
-// console.log(myFirstShop.sumSell());
+console.log(myFirstShop.sumSell());
 
-// console.log(myFirstShop.countSell());
+console.log(myFirstShop.countSell());
 
-// console.log(myFirstShop.countGoods());
+console.log(myFirstShop.countGoods());
 
 console.log(myFirstShop.countTypeGoods('clothes'));
 
 console.log(myFirstShop.countTypeGoods('vehicle transport'));
 
-// console.log(myFirstShop.countSellTypeGoods('vehicle transport'));
+console.log(myFirstShop.countSellTypeGoods('vehicle transport'));
 
-// console.log(myFirstShop.countSellTypeGoods('clothes'));
+console.log(myFirstShop.countSellTypeGoods('clothes'));
 
