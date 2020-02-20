@@ -81,68 +81,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./lesson5/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./lesson5/css/myIndex.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./lesson5/Client.js":
-/*!***************************!*\
-  !*** ./lesson5/Client.js ***!
-  \***************************/
-/*! exports provided: Client */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./lesson5/css/myIndex.js":
+/*!********************************!*\
+  !*** ./lesson5/css/myIndex.js ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Client\", function() { return Client; });\nclass Client {\r\n    constructor(name, surName, purchase = 0, amount = 0, goods = []) {\r\n        this.name = name;\r\n        this.surName = surName;\r\n        this.purchase = purchase;\r\n        this.amount = amount;\r\n        this.goods = goods;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./lesson5/Client.js?");
-
-/***/ }),
-
-/***/ "./lesson5/Goods.js":
-/*!**************************!*\
-  !*** ./lesson5/Goods.js ***!
-  \**************************/
-/*! exports provided: Goods */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Goods\", function() { return Goods; });\nclass Goods {\r\n    constructor(title, type, value) {\r\n        this.title = title;\r\n        this.type = type;\r\n        this.value = value;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./lesson5/Goods.js?");
-
-/***/ }),
-
-/***/ "./lesson5/Purchase.js":
-/*!*****************************!*\
-  !*** ./lesson5/Purchase.js ***!
-  \*****************************/
-/*! exports provided: Purchase */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Purchase\", function() { return Purchase; });\nclass Purchase {\r\n    constructor(client, type, count, sum, date = new Date()){\r\n        this.date = date;\r\n        this.client = client;\r\n        this.type = type;\r\n        this.count = count;\r\n        this.sum = sum;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./lesson5/Purchase.js?");
-
-/***/ }),
-
-/***/ "./lesson5/Shop.js":
-/*!*************************!*\
-  !*** ./lesson5/Shop.js ***!
-  \*************************/
-/*! exports provided: Shop */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"Shop\", function() { return Shop; });\n/* harmony import */ var _Purchase__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Purchase */ \"./lesson5/Purchase.js\");\n\r\n\r\nclass Shop {\r\n    constructor(id) {\r\n        this.id = id;\r\n        this.goods = [];\r\n        this.clients = [];\r\n        this.purchases = [];\r\n    }\r\n\r\n    addPurchases(purchase){\r\n        this.purchases.push(purchase);\r\n    }\r\n    addGoods(item, count = 1){\r\n        for (let i = 1; i <= count; i++) {\r\n            this.goods.push(item);\r\n        }\r\n    }\r\n\r\n    deleteGoods(item, count = 1){\r\n        this.goods.splice(this.goods.indexOf(item), count);\r\n    }\r\n\r\n    addClients(item) {\r\n        this.clients.push(item);\r\n    }\r\n\r\n    deleteClient(index, count = 1){\r\n        this.clients.splice(index, count);\r\n    }\r\n\r\n    sell(client, type, count, item){     \r\n        \r\n        let productToSell = this.goods.filter(goods => goods.name == item);\r\n        // if (!productToSell){\r\n        //     return 'Товара ${item} нет на складе!';\r\n        // }\r\n            \r\n        // if (productToSell.length < count){\r\n        //     return 'Товара ${item} не хватает на складе!';\r\n        // }\r\n            \r\n        this.goods.splice(0, productToSell.length - count);\r\n        productToSell.forEach(p => {\r\n            this.deleteGoods(p);\r\n        })\r\n        this.clients[this.clients.indexOf(client)].purchase += count * item.value;\r\n        this.clients[this.clients.indexOf(client)].amount += count;\r\n        this.clients[this.clients.indexOf(client)].goods.push(item.name);\r\n\r\n        let sum = count * item.value;\r\n        this.addPurchases(new _Purchase__WEBPACK_IMPORTED_MODULE_0__[\"Purchase\"](client.name, type, count, sum));\r\n    }\r\n\r\n    countSell(){\r\n        let count = 0;\r\n        this.purchases.map((element) => {\r\n            count += element.count;\r\n        })\r\n    \r\n        return `Количество проданного товара: ${count}`;\r\n    }\r\n\r\n    sumSell(){\r\n        let sum = 0;\r\n    \r\n        this.purchases.map((element) => {\r\n            sum += element.sum;\r\n        })\r\n    \r\n        return `Сумма заработанных денег: ${sum}`;\r\n    }\r\n\r\n    countGoods(){\r\n        return `Количество товара на складе: ${this.goods.length}`;\r\n    }\r\n    \r\n    countSellTypeGoods(type){\r\n        let count = 0;\r\n        for (let key in this.purchases) {\r\n            if (this.purchases[key].type == type) {\r\n                count += this.purchases[key].count;\r\n            }\r\n        }\r\n        return `Количество проданного товара типа ${type}: ${count}`;\r\n    }\r\n    \r\n    countTypeGoods(type){\r\n        let count = 0;\r\n        for (let key in this.goods) {\r\n            if (this.goods[key].type == type) {\r\n                count++;\r\n            }\r\n        }\r\n        return `Количество товара на складе типа ${type}: ${count}`;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./lesson5/Shop.js?");
-
-/***/ }),
-
-/***/ "./lesson5/index.js":
-/*!**************************!*\
-  !*** ./lesson5/index.js ***!
-  \**************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Goods_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Goods.js */ \"./lesson5/Goods.js\");\n/* harmony import */ var _Client_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Client.js */ \"./lesson5/Client.js\");\n/* harmony import */ var _Shop_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Shop.js */ \"./lesson5/Shop.js\");\n\r\n\r\n\r\n\r\n\r\n\r\nlet myFirstShop = new _Shop_js__WEBPACK_IMPORTED_MODULE_2__[\"Shop\"](1);\r\n\r\nlet dress = new _Goods_js__WEBPACK_IMPORTED_MODULE_0__[\"Goods\"]('Dress', 'clothes', 100);\r\nlet coat = new _Goods_js__WEBPACK_IMPORTED_MODULE_0__[\"Goods\"]('Coat', 'clothes', 200);\r\nlet car = new _Goods_js__WEBPACK_IMPORTED_MODULE_0__[\"Goods\"]('Car', 'vehicle transport', 3100);\r\n\r\nlet ekonomik = new _Client_js__WEBPACK_IMPORTED_MODULE_1__[\"Client\"]('Anastasiia', 'Andreeva', 3000);\r\nlet eleks = new _Client_js__WEBPACK_IMPORTED_MODULE_1__[\"Client\"]('Irina', 'Popovich', 2000);\r\nlet employment = new _Client_js__WEBPACK_IMPORTED_MODULE_1__[\"Client\"]('Victoriia', 'Kshenina', 1000);\r\n\r\nmyFirstShop.addGoods(dress, 20);\r\nmyFirstShop.addGoods(coat, 10);\r\nmyFirstShop.addGoods(car, 5);\r\n\r\nmyFirstShop.addClients(ekonomik);\r\nmyFirstShop.addClients(eleks);\r\nmyFirstShop.addClients(employment);\r\n\r\nmyFirstShop.deleteGoods(1, 1);\r\n\r\nmyFirstShop.sell(eleks, 'clothes', 2, dress);\r\n\r\nmyFirstShop.sell(ekonomik, 'vehicle transport', 1, car);\r\nmyFirstShop.sell(employment, 'clothes', 2, coat);\r\n\r\nconsole.log(myFirstShop);\r\n\r\nconsole.log(myFirstShop.sumSell());\r\n\r\nconsole.log(myFirstShop.countSell());\r\n\r\nconsole.log(myFirstShop.countGoods());\r\n\r\nconsole.log(myFirstShop.countTypeGoods('clothes'));\r\n\r\nconsole.log(myFirstShop.countTypeGoods('vehicle transport'));\r\n\r\nconsole.log(myFirstShop.countSellTypeGoods('vehicle transport'));\r\n\r\nconsole.log(myFirstShop.countSellTypeGoods('clothes'));\r\n\r\n\n\n//# sourceURL=webpack:///./lesson5/index.js?");
+eval("let body = document.createElement('body');\r\ndocument.lastChild.appendChild(body);\r\n\r\n//------------------------------ Main-------------------------------\r\n\r\nlet main = document.createElement('main');\r\nmain.className = \"profile\";\r\nbody.appendChild(main);\r\n\r\nlet section = document.createElement('section');\r\nsection.className = \"section main-section section_black\";\r\nmain.appendChild(section);\r\n\r\nlet article = document.createElement('article');\r\narticle.className = 'main-article main-article_white';\r\nsection.appendChild(article);\r\n\r\nlet h1 = document.createElement('h1');\r\nh1.className = 'main-article__title';\r\nh1.innerHTML = \"Andreeva Anastasiia\";\r\narticle.appendChild(h1);\r\n\r\nlet ul = document.createElement('ul');\r\nul.className = 'main-article__list';\r\narticle.appendChild(ul);\r\n\r\nlet li = document.createElement('li');\r\nli.innerHTML = 'I am 29 and am working at IT company';\r\nul.appendChild(li);\r\n\r\nlet img = document.createElement('img');\r\nimg.className = 'section__img';\r\nimg.src = \"assets/picture.jpg\";\r\nsection.appendChild(img);\r\n\r\n// -----------------------------------------About-section\r\nlet aboutSection = document.createElement('section');\r\naboutSection.className = \"section about-section\";\r\nmain.appendChild(aboutSection);\r\n\r\nlet aboutArticle = document.createElement('article');\r\naboutArticle.className = 'article-about';\r\naboutSection.appendChild(aboutArticle);\r\n\r\nlet h1About = document.createElement('h1');\r\nh1About.className = 'article-about__title article-about__title_grey';\r\nh1About.innerHTML = \"About me\";\r\naboutArticle.appendChild(h1About);\r\n\r\nlet p = document.createElement('p');\r\np.className = 'article-about__item';\r\np.innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.Nobis facilis fuga, illo at. Natus eos, eligendi illum rerum omnis porro ex, magni, explicabo veniamincidunt in quam sapiente ut ipsum.';\r\naboutArticle.appendChild(p);\r\n\r\nlet aboutImg = document.createElement('img');\r\naboutImg.className = 'about-section__img';\r\naboutImg.src = \"assets/aboutme.jpg\";\r\naboutSection.appendChild(aboutImg);\r\n// -----------------------------------------------------\r\n\r\n\r\n\r\n\n\n//# sourceURL=webpack:///./lesson5/css/myIndex.js?");
 
 /***/ })
 

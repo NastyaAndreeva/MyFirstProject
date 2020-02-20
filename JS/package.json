@@ -5,8 +5,8 @@
   "main": "Objects.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --mode development ./lesson5/index.js --output ./lesson5/main.js",
-    "prod": "webpack --mode production ./lesson5/index.js --output ./lesson5/main.js"
+    "dev": "webpack --mode development ./lesson5/css/myIndex.js --output ./lesson5/main.js",
+    "prod": "webpack --mode production ./lesson5/css/myIndex.js --output ./lesson5/main.js"
   },
   "keywords": [],
   "author": "",
