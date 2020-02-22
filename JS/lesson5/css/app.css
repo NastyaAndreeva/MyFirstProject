@@ -92,6 +92,7 @@ html {
 }
 .main-article__item {
   margin-bottom: 10px;
+  transition: all 1s;
 }
 .main-article__item::before {
   content: url("../assets/check_icon.png");
