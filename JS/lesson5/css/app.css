@@ -2,6 +2,20 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+
+/*плавная загрузка страниц*/
+body.fade{
+    opacity: 0;
+  }
+body.appear {
+    opacity: 1;
+    transition: opacity 3s;
+  }
+.main-section.appear{
+
+  }
+  
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -73,9 +87,7 @@ html {
 .section_black {
   background-color: #445161;
 }
-.section__img {
-  width: 35%;
-}
+
 
 /*======================================== Main section ===========================================*/
 .main-section {
@@ -377,10 +389,47 @@ html {
 
 /*# sourceMappingURL=app.css.map */
 
-.alert {
-  padding: 15px;
-  border: 1px solid #d6e9c6;
-  border-radius: 4px;
-  color: #3c763d;
-  background-color: #dff0d8;
+.slider {
+  width: 300px;
+  position: relative;
+  border: 1px solid #9c6;
+  margin: 100px auto;
+  overflow: hidden;
+}
+
+.slider__line {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+  left: 0;
+  transition: all ease 1s;
+}
+
+.section__img {
+  float: left;
+  width: 300px;
+}
+
+.arrow-right {
+  height: 20px;
+  margin: auto;
+}
+
+.main-article_hide {
+  opacity: 0;
+  /* overflow: hidden; */
+  transition: all ease 2s;
+}
+
+.main-article_show {
+  opacity: 1;
+  /* overflow: hidden; */
+  transition: all ease 2s;
+}
+
+.link {
+  float: right; 
+  margin-right: 50px; 
+  font-size: 20px; 
+  font-weight: 700;
 }

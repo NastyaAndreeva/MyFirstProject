@@ -6,23 +6,34 @@
     <title>First lesson</title>
     <link rel="stylesheet" href="css/app.css">
     <!-- <link rel="stylesheet" href="css/main.css"> -->
-    
+
 </head>
 
-<body>
+<body class="fade" id = 'top'>
     <main class="profile">
-        <section class="section main-section section_black">
+        <section class="section main-section section_black ">
             <article class="main-article main-article_white">
                 <h1 class="main-article__title">Andreeva Anastasiia</h1>
                 <ul class="main-article__list">
-                    <li class="main-article__item">I am 29 and am working at IT company</li>
+                    <li class="main-article__item ">I am 29 and am working at IT company</li>
                     <li class="main-article__item">A detailed description of your product</li>
                     <li class="main-article__item">Tell us about the advantages and merits</li>
                     <li class="main-article__item">Associate the page with the payment system</li>
                 </ul>
             </article>
-            <img src="assets/picture.jpg" class="section__img" alt="">
+            <section class="slider">
+                <ul class="slider__line">
+                    <li><img src="assets/picture.jpg" class="section__img" alt=""></li>
+                    <li><img src="assets/picture1.jpg" class="section__img" alt=""></li>
+                    <li><img src="assets/picture2.jpg" class="section__img" alt=""></li>
+                    <li><img src="assets/picture3.jpg" class="section__img" alt=""></li>
+                    <li><img src="assets/picture4.jpg" class="section__img" alt=""></li>
+                </ul>
+            </section>
+            <button class="arrow-right">⇨</button>
+            <!-- <button class="hide arrow-right">Hide</button> -->
         </section>
+        <button class="hide" style="margin-left: 1190px;">Hide</button>
         <section class="section about-section">
             <article class="article-about">
                 <h1 class="article-about__title article-about__title_grey">About me</h1>
@@ -154,7 +165,7 @@
                                 impedit iure placeat, ullam. Reprehenderit aliquam, nemo cum velit ratione perferendis
                                 quas,
                                 maxime, quaerat porro totam, dolore minus inventore.</p>
-                                <p class="section-photos__title">The description for the photo</p>
+                            <p class="section-photos__title">The description for the photo</p>
                         </section>
                     </li>
                     <li class="advantages__item">
@@ -165,7 +176,7 @@
                                 impedit iure placeat, ullam. Reprehenderit aliquam, nemo cum velit ratione perferendis
                                 quas,
                                 maxime, quaerat porro totam, dolore minus inventore.</p>
-                                <p class="section-photos__title">The description for the photo</p>
+                            <p class="section-photos__title">The description for the photo</p>
                         </section>
                     </li>
                 </section>
@@ -178,24 +189,28 @@
                                 impedit iure placeat, ullam. Reprehenderit aliquam, nemo cum velit ratione perferendis
                                 quas,
                                 maxime, quaerat porro totam, dolore minus inventore.</p>
-                                <p class="section-photos__title">The description for the photo</p>
+                            <p class="section-photos__title">The description for the photo</p>
                         </section>
                     </li>
                     <li class="advantages__item">
                         <img src="../MyFirstProject/assets/userpic.png" class="section-photos_size">
                         <section class="section-photos_tab section-review_grey">
-                            <i><p class="advantages__item_tab">Delectus dolorem vero quae beatae quasi dolor deserunt iste
-                                amet atque,
-                                impedit iure placeat, ullam. Reprehenderit aliquam, nemo cum velit ratione perferendis
-                                quas,
-                                maxime, quaerat porro totam, dolore minus inventore.</p></i>
-                                <p class="section-photos__title">The description for the photo</p>
+                            <i>
+                                <p class="advantages__item_tab">Delectus dolorem vero quae beatae quasi dolor deserunt
+                                    iste
+                                    amet atque,
+                                    impedit iure placeat, ullam. Reprehenderit aliquam, nemo cum velit ratione
+                                    perferendis
+                                    quas,
+                                    maxime, quaerat porro totam, dolore minus inventore.</p>
+                            </i>
+                            <p class="section-photos__title">The description for the photo</p>
                         </section>
                     </li>
                 </section>
             </ul>
         </section>
-
+        <a class="link" href="#top">Up</a>
         <section class="section purchase">
             <h1 class="purchase__title article-about__title_grey advantages__title_center">Offers</h1>
             <ul class="purchase-offers">
@@ -246,6 +261,7 @@
                 </li>
             </ul>
         </section>
+        <a class="link" href="#top">Up</a>
         <section class="contacts section_black main-article_white">
             <h2 class="main-article__title  advantages__title_center contacts__title">Contacts</h2>
             <section class="contacts__place">
@@ -267,6 +283,7 @@
             </section>
         </section>
     </main>
+    <a class="link" href="#top">Up</a>
     <footer class="footer-text">
         <article>Copyright © 2020 Andreeva Anastasiia</article>
     </footer>
