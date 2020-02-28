@@ -1,0 +1,22 @@
+{
+  "name": "myfirstproject",
+  "version": "1.0.0",
+  "description": "I want to create a website about myself and for uploading my works. \r ===\r ## Code of Conduct\r In order to ensure that the JavaScript/Html community is welcoming to all, please review and abide by the [Code of Conduct](https://tproger.ru/translations/complete-sass-guide/).",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NastyaAndreeva/MyFirstProject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NastyaAndreeva/MyFirstProject/issues"
+  },
+  "homepage": "https://github.com/NastyaAndreeva/MyFirstProject#readme"
+}
