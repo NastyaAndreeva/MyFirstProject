@@ -1,0 +1,25 @@
+.main-section {
+   font-family: Georgia, 'Times New Roman', Times, serif; 
+   margin-left: 50px;
+}
+
+.main-section__button {
+    height: 30px;
+    width: 100px;
+    background-color: pink;
+    margin-left: 300px;
+    border-radius: 5px;
+    border-color: darkmagenta;
+}
+
+.main-section__button:hover {
+    background-color: crimson;
+}
+
+.results__percent {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 30px;
+    color: darkblue;
+    text-align: center;
+}
