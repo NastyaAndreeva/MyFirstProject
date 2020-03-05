@@ -39,7 +39,7 @@ let token = function () {
         .then((newResult) => {
             let formData = new FormData();
             formData.append("homework_done", true);
-            formData.append("token2", newResult);
+            formData.append("token", newResult);
             formData.append("token1", 'newResult');
             fetch('https://votesystem.mobius.team/api/homework/update', {
                 method: 'POST',
@@ -48,8 +48,14 @@ let token = function () {
                 .then((fetch) => {
                     return fetch.json()
                 })
+
                 .then((finish)=> {
-                alert(finish.message)
+                    if (finish.message == undefined){
+                        alert(finish)
+                    }
+                    else {
+                        alert(finish.message)
+                    }                   
             })
         })
 }
