@@ -48,7 +48,6 @@ let token = function () {
                 .then((fetch) => {
                     return fetch.json()
                 })
-
                 .then((finish)=> {
                     if (finish.message == undefined){
                         alert(finish)
