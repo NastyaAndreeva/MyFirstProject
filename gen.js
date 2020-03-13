@@ -16,7 +16,19 @@ let str = '';
 for(let code of generateAlphaNum()) {
     str += String.fromCharCode(code);
 }
-  
+
+// function my_gen(len) {
+//     let password = '';
+//     let i = 0;
+//     while (i < len) {
+//         for(let code of generateAlphaNum()) {
+//             password += String.fromCharCode(code);
+//         }
+//         i++;
+//     }
+//     return password;
+// }
+
 function gen_password(len){
         let password = "";
         for (let i = 0; i < len; i++){

@@ -16,8 +16,6 @@ async function tests() {
     alert(data.message);
 }
 
-tests();
-
 async function result() {
     let results = await fetch('https://votesystem.mobius.team/api/result/23');
     let data = await results.json();
@@ -25,36 +23,59 @@ async function result() {
     myResult.innerText = 'My result: ' + data.user.result;
     alert(data.message);
 }
-let token = function () {
-    fetch('https://votesystem.mobius.team/api/result/23/token')
-        .then((data) => {
-            return data.json()
-        })
-        .catch(() => {
-            alert('Wrong ID')
-        })
-        .then((myToken) => {
-            return myToken.token
-        })
-        .then((newResult) => {
-            let formData = new FormData();
-            formData.append("homework_done", true);
-            formData.append("token", newResult);
-            formData.append("token1", 'newResult');
-            fetch('https://votesystem.mobius.team/api/homework/update', {
-                method: 'POST',
-                body: formData
-            })
-                .then((fetch) => {
-                    return fetch.json()
-                })
-                .then((finish)=> {
-                    if (finish.message == undefined){
-                        alert(finish)
-                    }
-                    else {
-                        alert(finish.message)
-                    }                   
-            })
-        })
+
+const homework = async() => {
+    return fetch('https://votesystem.mobius.team/api/result/23/token')
+    .then((data) => {
+        return data.json();       
+    })
+    .catch(() => {
+        try {
+            throw new SyntaxError('Wrong ID');  
+        }
+        catch(e) {
+            alert(e.message);
+        }
+    })
+    .then(json => {
+        let formData = new FormData();
+        formData.set('token', json.token);
+        formData.set('homework_done', true);
+
+        return fetch('https://votesystem.mobius.team/api/homework/update', {method: 'POST', body: formData});
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(finish => {
+        try {
+            if (finish.message != undefined){
+                throw new Error(`Message: ${finish.message}`)
+            }
+            alert(finish);
+        }
+        catch(e){
+            alert(e.message)
+        }
+    }) 
+};
+
+async function* myGenerator() {
+    yield tests();
+    yield result();
+    yield homework();
 }
+
+let generator = myGenerator();
+
+let one = generator.next();
+let two = generator.next();
+let three = generator.next();
+
+let myFunction = () => {
+    alert(one);
+    alert(two);
+    alert(three);
+}
+
+myFunction();
