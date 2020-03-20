@@ -66,6 +66,7 @@ async function* myGenerator() {
     yield homework();
 }
 
+
 let generator = myGenerator();
 
 let one = generator.next();
