@@ -1,0 +1,277 @@
+%display-flex {
+    display: flex;
+}
+@mixin location ($MaxWidth) {
+    @if ($MaxWidth > 640px) {
+        flex-flow: row;
+    } @else {
+        flex-flow: column;
+    }
+}
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}
+
+.profile {
+    width: 1280px;
+    margin: 0 auto;
+    font-size: 2rem;
+}
+
+.section {
+    padding: 50px 50px 50px 50px;
+    &_black {
+        background-color: $blue-color;  
+    }
+    &__img {
+        width: 35%;
+    }
+}
+
+/*======================================== Main section ===========================================*/
+
+.main-section {
+    @extend %display-flex;
+    flex-flow: row;
+    // @include location(600px);
+    justify-content: space-between;
+}
+
+.main-article {
+    &__title {
+        font-size: 60px;
+        margin-bottom: 100px - 50px;
+    }
+    &__list {
+        font-size: 10px * 2;
+    }
+    &__item {
+        margin-bottom: 10px;
+        &::before {
+            content: url("../assets/check_icon.png");
+    margin-right: 10px;
+        }
+    }
+    &_white {
+        color: white;
+    }
+
+}
+/* -----------------------------End main-section----------------------------------- */
+/* =============================Article about====================================== */
+.about-section {
+    @extend %display-flex;
+    flex-flow: row;
+    justify-content: space-between;
+
+    &_img {
+        width: 30%;
+    }
+}
+
+.article-about {
+    width: 60%;
+    &__title {
+        margin-bottom: 40px;
+        font-size: 30px;
+    }
+    &__title_grey {
+        color: #445161;
+    }
+    &__item {
+        line-height: 25px;
+        margin-right: 20px;
+        margin-bottom: 10px;
+    }
+}
+/* -----------------------------End article about */
+/* =============================Advantages=============================================== */
+.advantages {
+    &__list {
+        @extend %display-flex;
+        flex-flow: row;
+    }
+    &__column {
+        @extend %display-flex;
+        flex-flow: column;
+        margin-left: 20px;
+    }
+    &__title {
+        margin-bottom: 40px;
+        font-size: 30px;
+        &_center {
+            text-align: center;
+        }
+    }
+    &__item {
+        font-size: 16px;
+        line-height: 25px;
+        margin-bottom: 20px;
+        @extend %display-flex;
+        flex-flow: row;
+        &_tab {
+            padding-left: 5px;
+        }
+        &_size {
+            height: 30px;
+        }
+    }
+    &_grey {
+        background-color: #f5f5f5;
+    }
+}
+/* ==================================End advantages================================= */
+
+/* -----------------------------------Photos----------------------------------------- */
+.section-photos {
+    &__list {
+        @extend %display-flex;
+        flex-flow: row;
+    }
+    &__column {
+        @extend %display-flex;
+        flex-flow: column;
+        margin-left: 20px;
+    }
+    &__title {
+        font-size: 24px;
+        color: $blue-color;
+        margin-bottom: 15px;
+    }
+    &_tab {
+        margin-left: 20px;
+    }
+    &_size {
+        height: 80px;
+    }
+}
+.section-review_grey {
+    background-color: lightgray;
+    border-radius: 5px;
+}
+/* -------------------------------End photos------------------------------------------ */
+
+/* -------------------------------Purchase------------------------------------------- */
+.purchase {
+    padding: 100px;
+    &__title {
+        font-size: 30px;
+    }
+}
+.purchase-offers {
+    @extend %display-flex;
+    flex-flow: row;
+    &__title {
+        text-align: center;
+        color: white;
+        font-size: 24px;
+        padding: 19px 0;
+    }
+    &__dollar{
+        padding: 10px 0;
+        text-align: center;
+        background-color: white;
+        font-size: 40px;
+        color: $blue-color;
+    }
+    &__item {
+        width: 300px;
+        margin-right: 40px;
+        border: 2px;
+        border-style: solid;
+        border-color: $blue-color;
+    }
+    &__standart {
+        height: 300px;
+        margin-top: 300px;
+    }
+    &__premium {
+        height: 400px;
+        margin-top: 200px;
+    }
+    &__lux {
+        height: 500px;
+        margin-top: 100px;
+    }
+    &__list {
+        padding-top: 20px;
+        padding-left: 20px;
+        font-size: 14px;
+        line-height: 25px;
+    }
+    &__button {
+        margin-top: 10px;
+        margin-left: 20px;
+        width: 260px;
+        height: 40px;
+        color: $blue-color;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+}
+/* -------------------------------End purchase--------------------------------------- */
+
+/* --------------------------------Contacts------------------------------------------- */
+.contact-form {
+    margin-left: 250px;
+    width: 500px;
+    &__name {
+        width: 500px;
+        height: 40px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+    }
+    &__text {
+        width: 500px;
+        height: 150px;
+        border-radius: 5px;
+    }
+    &__button {
+        margin: 20px 170px 50px 170px;
+        width: 150px;
+        height: 40px;
+        border-radius: 5px;
+        color: $blue-color;
+        font-weight: bold;
+    }
+}
+.contacts {
+    &__place {
+        @extend %display-flex;
+        flex-flow: row;
+    }
+    &__title {
+        padding-top: 50px;
+    }
+}
+.contacts-info {
+    margin-left: 45px;
+    line-height: 40px;
+    &__skype::before{
+        content: url("../assets/skype.png");
+        padding-right: 5px;
+    }
+    &__icq::before{
+        content: url("../assets/icq.png");
+        padding-right: 5px;
+    }
+    &__email::before{
+        content: url("../assets/email.png");
+        padding-right: 5px;
+    }
+    &__phone::before{
+        content: url("../assets/phone.png");
+        padding-right: 5px;
+    }
+}
+/* --------------------------------End contacts---------------------------------------- */
+/* -------------------------------Footer------------------------------------------- */
+.footer-text{
+    font-size: 12px;
+    color: $blue-color;
+    text-align: center;
+    padding: 19px 0;
+}
+/* ------------------------------End footer----------------------------------------- */
